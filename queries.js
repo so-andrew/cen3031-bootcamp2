@@ -48,7 +48,9 @@ var retrieveAllListings = function() {
    */
   Listing.find({}, function(err, listings){
       if(err) throw err;
-      console.log(listings);
+      listings.forEach(function(element){
+          console.log(element);
+      });
   });
 };
 
