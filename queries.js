@@ -1,6 +1,5 @@
 /* Add all the required libraries*/
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
     Listing = require('./ListingSchema.js'),
     config = require('./config');
 
