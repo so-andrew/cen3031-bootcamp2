@@ -1,6 +1,6 @@
 /* Import mongoose and define any variables needed to create the schema */
 var mongoose = require('mongoose'), 
-    Schema = mongoose.Schema;
+  Schema = mongoose.Schema;
 
 /* Create your schema for the data in the listings.json file that will define how data is saved in your database */
 var listingSchema = new Schema({
@@ -22,6 +22,10 @@ listingSchema.pre('save', function(next) {
   if(!this.created_at) this.created_at = currentDate;
   next();
 });
+
+listingSchema.pre('findOneAndUpdate', function(){
+  this.update({}, { $set: { updated_at: new Date() } });
+})
 
 /* Use your schema to instantiate a Mongoose model */
 var Listing = mongoose.model('Listing', listingSchema);
